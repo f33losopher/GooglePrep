@@ -34,27 +34,37 @@ void Ch4TreesAndGraphs::bfsPrint(Node* head) {
 
 	// Number of elements to print on each row
 	unsigned int rowPrint = 1;
-	unsigned int partition = 128;
-	int numSpaces = 100;
-	while(!printQ.empty()) {
-		for (unsigned int i=0; i < rowPrint; ++i) {
+	unsigned int partition = 0;
+	unsigned int printSpace = 128;
+	unsigned int divisor = 2;
+	unsigned int addToDivisor = 1;
+	char format[50];
+	char format2[50];
+	format[0] = '%';
+	format2[0] = '%';
+	while (!printQ.empty()) {
+		for (unsigned int i = 0; i < rowPrint; ++i) {
 			if (printQ.empty())
 				break;
 
 			node = printQ.front();
 			printQ.pop();
-			partition = (numSpaces + rowPrint + rowPrint) / (rowPrint + 1);
-			char format[50];
-			format[0] = '%';
+//			partition = (numSpaces + rowPrint + rowPrint) / (rowPrint + 1);
+			partition = printSpace / (divisor);
+
 			sprintf(&format[1], "%dd", partition);
+			sprintf(&format2[1], "%dc", partition);
 
 			if (node != NULL)
 				printf(format, node->_data);
 			else
-				printf(format, -1);
+				printf(format2, ' ');
 		}
-		cout << endl;
+		cout << endl << endl;
 		rowPrint <<= 1;
+		divisor += addToDivisor;
+		printSpace += addToDivisor;
+		addToDivisor <<= 1;
 	}
 }
 
@@ -64,7 +74,15 @@ void Ch4TreesAndGraphs::preOrderPrint(Node* head) {
 	cout << head->_data << " ";
 	preOrderPrint(head->_left);
 	preOrderPrint(head->_right);
-	cout << endl;
+}
+
+void Ch4TreesAndGraphs::inOrderPrint(Node* head) {
+	if(head == NULL)
+		return;
+
+	inOrderPrint(head->_left);
+	cout << head->_data << " ";
+	inOrderPrint(head->_right);
 }
 
 int Ch4TreesAndGraphs::maxDepth(Node* node) {
@@ -75,6 +93,33 @@ int Ch4TreesAndGraphs::maxDepth(Node* node) {
 	int right = maxDepth(node->_right);
 
 	return 1 + ((left > right) ? left:right);
+}
+
+int Ch4TreesAndGraphs::minDepth(Node* node) {
+	if (node == NULL)
+		return 0;
+	int left = minDepth(node->_left);
+	int right = minDepth(node->_right);
+
+	return 1 + ((left < right) ? left:right);
+}
+
+Node* Ch4TreesAndGraphs::find(Node* node, int data) {
+	Node* rtn = NULL;
+	if (node == NULL)
+		return NULL;
+	else if(node->_data == data)
+		rtn = node;
+	else {
+		Node* l = find(node->_left, data);
+		Node* r = find(node->_right, data);
+		if (l != NULL && l->_data == data)
+			rtn = l;
+		else if (r != NULL && r->_data == data)
+			rtn = r;
+	}
+
+	return rtn;
 }
 
 Node* Ch4TreesAndGraphs::createBTfromSortedArray(int* array, int size) {
@@ -90,6 +135,10 @@ Node* Ch4TreesAndGraphs::createBTfromSortedArray(int* array, int size) {
 	int* right = &array[mid+1];
 	node->_left = createBTfromSortedArray(left, (mid-1) - sIdx + 1);
 	node->_right = createBTfromSortedArray(right, eIdx - (mid+1) + 1);
+	if (node->_left != NULL)
+		node->_left->_parent = node;
+	if (node->_right != NULL)
+		node->_right->_parent = node;
 
 	return node;
 }
@@ -102,6 +151,10 @@ Node* Ch4TreesAndGraphs::createBTfromSortedArray(int* sArray, int sIdx, int eIdx
 	Node* node = new Node(sArray[mid]);
 	node->_left = createBTfromSortedArray(sArray, sIdx, mid - 1);
 	node->_right = createBTfromSortedArray(sArray, mid + 1, eIdx);
+	if (node->_left != NULL)
+		node->_left->_parent = node;
+	if (node->_right != NULL)
+		node->_right->_parent = node;
 
 	return node;
 }
@@ -145,3 +198,22 @@ LinkedList** Ch4TreesAndGraphs::listsFromDepth(Node* bstHead) {
 	return lists;
 }
 
+Node* Ch4TreesAndGraphs::next(Node* node, Node* child) {
+	Node* rtn = NULL;
+
+	// Need to guard against going up the parent and then going right
+	// back down the right path
+	if(node->_right != NULL && node->_right != child) {
+		rtn = node->_right;
+		while (rtn->_left != NULL)
+			rtn = rtn->_left;
+	} else {
+		Node* parent = node->_parent;
+		if (parent->_left == node)
+			rtn = parent;
+		else
+			rtn = next(parent, node);
+	}
+
+	return rtn;
+}

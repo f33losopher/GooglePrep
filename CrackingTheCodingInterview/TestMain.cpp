@@ -7,6 +7,7 @@
 #include "Ch1ArraysAndStrings.h"
 #include "Ch2LinkedLists.h"
 #include "Ch4TreesAndGraphs.h"
+#include "Ch5BitManipulation.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
@@ -189,29 +190,51 @@ int main() {
 //	sum->print();
 	// END CH2
 
-	// CH3
-	int size = 20;
-	int* sortedArray = new int[size];
-	for (int i=0; i < size; i++) {
-		sortedArray[i] = i;
-	}
+	// CH4
+//	int size = 20;
+//	int* sortedArray = new int[size];
+//	for (int i=0; i < size; i++) {
+//		sortedArray[i] = i;
+//	}
+//
+//	TNode* head = Ch4TreesAndGraphs::createBTfromSortedArray(sortedArray, 0, size - 1);
+//	Ch4TreesAndGraphs::bfsPrint(head);
+//
+//	head = Ch4TreesAndGraphs::createBTfromSortedArray(sortedArray, size);
+//	Ch4TreesAndGraphs::bfsPrint(head);
+//
+//	int depth = Ch4TreesAndGraphs::maxDepth(head);
+//	cout << "Depth: " << depth << endl;
+//
+//	LinkedList** llists = Ch4TreesAndGraphs::listsFromDepth(head);
+//	for (int i=0; i < depth; i++) {
+//		llists[i]->print();
+//	}
+//
+//
+//	cout << "In order print\n";
+//	Ch4TreesAndGraphs::inOrderPrint(head);
+//	TNode* tmp = Ch4TreesAndGraphs::find(head, 13);
+//	cout << endl << "Node data: " << tmp->_data << endl;
+//
+//	tmp = Ch4TreesAndGraphs::next(tmp);
+//	cout << "In order next: " << tmp->_data << endl;
 
-	TNode* head = Ch4TreesAndGraphs::createBTfromSortedArray(sortedArray, 0, size - 1);
-	Ch4TreesAndGraphs::bfsPrint(head);
-
-	head = Ch4TreesAndGraphs::createBTfromSortedArray(sortedArray, size);
-	Ch4TreesAndGraphs::bfsPrint(head);
-
-	int depth = Ch4TreesAndGraphs::maxDepth(head);
-	cout << "Depth: " << depth << endl;
-
-	LinkedList** llists = Ch4TreesAndGraphs::listsFromDepth(head);
-	for (int i=0; i < depth; i++) {
-		llists[i]->print();
-	}
+	// END CH4
 
 
-	// END CH3
+
+	// CH5
+	unsigned int N = 1 << 10;
+	unsigned int M = 21;
+	int i = 2;
+	int j = 6;
+	Ch5BitManipulation::printBin(N);
+	Ch5BitManipulation::printBin(M);
+	unsigned int result = Ch5BitManipulation::prob5_1(N,M,i,j);
+	Ch5BitManipulation::printBin(result);
+
+	// END CH5
 
 	return 0;
 }
