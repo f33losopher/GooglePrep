@@ -18,7 +18,6 @@ using namespace std;
 typedef LinkedList::Node LNode;
 typedef Ch4TreesAndGraphs::Node TNode;
 
-
 void pMatrix(int** matrix, int row, int col) {
 	for (int r = 0; r < row; ++r) {
 		for (int c = 0; c < col; ++c) {
@@ -222,19 +221,51 @@ int main() {
 
 	// END CH4
 
-
-
 	// CH5
+	// Prob 5.1
 	unsigned int N = 1 << 10;
 	unsigned int M = 21;
 	int i = 2;
 	int j = 6;
 	Ch5BitManipulation::printBin(N);
 	Ch5BitManipulation::printBin(M);
-	unsigned int result = Ch5BitManipulation::prob5_1(N,M,i,j);
+	unsigned int result = Ch5BitManipulation::prob5_1(N, M, i, j);
 	Ch5BitManipulation::printBin(result);
 
+	cout << endl;
+
+	// Prob 5.2
+	cout << "1.625" << endl;
+	Ch5BitManipulation::prob5_2("1.625");
+	cout << "3.78125" << endl;
+	Ch5BitManipulation::prob5_2("3.78125");
+
+
+	unsigned int num = 20;
+	Ch5BitManipulation::printBin(num);
+	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_larger(num));
+
+	cout << endl;
+
+	num = 0xa0;
+	Ch5BitManipulation::printBin(num);
+	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
+	cout << endl;
+	num = 33;
+	Ch5BitManipulation::printBin(num);
+	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
+
+	cout << Ch5BitManipulation::prob5_5(31,14) << endl;
+	cout << Ch5BitManipulation::prob5_5(14,31) << endl;
+
+	cout << endl;
+
+	Ch5BitManipulation::prob5_6(523);
+	Ch5BitManipulation::prob5_6(4653);
+
+
 	// END CH5
+
 
 	return 0;
 }
