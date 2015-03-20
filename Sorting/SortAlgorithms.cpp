@@ -24,14 +24,13 @@ void Sort::print(int* array, int n) {
 }
 
 void Sort::bubble(int* array, int numElements) {
-	for (int i=0; i < numElements; i++) {
+	for (int right = numElements; right > 0; --right) {
 		bool swapped = false;
-		for(int j=1; j<numElements; j++) {
+		for(int j=1; j<right; j++) {
 			if(array[j] < array[j-1]) {
 				swap(array[j], array[j-1]);
 				swapped = true;
 			}
-			print(array, numElements);
 		}
 		if (!swapped) break;
 	}
@@ -46,15 +45,54 @@ void Sort::insertion(int* array, int numElements) {
 	}
 }
 
+void Sort::mergeSort::merge(int* array, int left, int right) {
+	int mid;
+
+	if (right > left) {
+		mid = (left + right)/2;
+		mergeSort::merge(array, left, mid);
+		mergeSort::merge(array, mid+1, right);
+		mergeSort::doMerge(array, left, mid+1, right);
+	}
+}
+
+void Sort::mergeSort::doMerge(int* array, int left, int mid, int right) {
+	int temp[100];
+	int i, left_end, num_elements, tmp_pos;
+
+	left_end = (mid -1);
+	tmp_pos = left;
+	num_elements = (right - left + 1);
+
+	while ((left <= left_end) && (mid <= right)) {
+		if (array[left] <= array[mid])
+			temp[tmp_pos++] = array[left++];
+		else
+			temp[tmp_pos++] = array[mid++];
+	}
+	while (left <= left_end)
+		temp[tmp_pos++] = array[left++];
+
+	while (mid <= right)
+		temp[tmp_pos++] = array[mid++];
+
+	for(i=0; i < num_elements; i++, --right)
+		array[right] = temp[right];
+}
+
+void Sort::merge(int* array, int size) {
+	mergeSort::merge(array, 0, size-1);
+}
+
 void Sort::quick(int* array, int left, int right) {
-	int index = PRIVATE::partition(array, left, right);
+	int index = quickSort::partition(array, left, right);
 	if(left < index - 1)
 		quick(array, left, index -1);
 	if(right > index)
 		quick(array, index, right);
 }
 
-int Sort::PRIVATE::partition(int* array, int left, int right) {
+int Sort::quickSort::partition(int* array, int left, int right) {
 	int pivot = array[(left+right)/2];
 	int beg = left;
 	int end = right;
@@ -65,7 +103,6 @@ int Sort::PRIVATE::partition(int* array, int left, int right) {
 			end--;
 		if(beg <= end) {
 			swap(array[beg], array[end]);
-			print(array, 10);
 			beg++;
 			end--;
 		}
@@ -82,7 +119,6 @@ void Sort::selection(int* array, int numElements) {
 				toSwap=j;
 		}
 		swap(array[i], array[toSwap]);
-		print(array, numElements);
 	}
 }
 

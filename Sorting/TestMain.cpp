@@ -24,7 +24,7 @@ void print(int* array, int n) {
 }
 
 int main() {
-	int numElements = 10;
+	int numElements = 20;
 	int numbers[numElements];
 
 //	initialize(numbers, numElements);
@@ -56,6 +56,12 @@ int main() {
 	Sort::quick(numbers, 0, numElements-1);
 	print(numbers, numElements);
 	cout << endl;
+
+//	initialize(numbers, numElements);
+//	print(numbers, numElements);
+//	Sort::merge(numbers, numElements);
+//	print(numbers, numElements);
+//	cout << endl;
 
 	return 0;
 }

@@ -20,11 +20,18 @@ void bubble(int* array, int numElements);
 // in the correct location
 void insertion(int* array, int numElements);
 
+namespace mergeSort {
+void merge(int* array, int left, int right);
+void doMerge(int* array, int left, int mid, int right);
+}
 void merge(int* array, int numElements);
 
 // Choose a pivot value. Smaller values to left and bigger values
 // go to the right. Then recursively run quick sort on
 // the two partitions
+namespace quickSort {
+int partition(int* array, int left, int right);
+}
 void quick(int* array, int left, int right);
 
 // Searches for smallest value puts at Index=0
@@ -37,9 +44,7 @@ void selection(int* array, int numElements);
 // is 1.
 void shell(int* array, int numElements);
 
-namespace PRIVATE {
-int partition(int* array, int left, int right);
-}
+
 
 }
 
