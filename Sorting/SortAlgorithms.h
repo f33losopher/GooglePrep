@@ -20,6 +20,8 @@ void bubble(int* array, int numElements);
 // in the correct location
 void insertion(int* array, int numElements);
 
+void merge(int* array, int numElements);
+
 // Choose a pivot value. Smaller values to left and bigger values
 // go to the right. Then recursively run quick sort on
 // the two partitions

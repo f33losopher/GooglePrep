@@ -13,7 +13,7 @@ using namespace std;
 struct cmpChar {
 	bool operator() (const char a, const char b) {
 		// Return true if a is ordered before b
-		return a > b;
+		return a < b;
 	}
 };
 
