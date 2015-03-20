@@ -8,6 +8,7 @@
 #include "Ch2LinkedLists.h"
 #include "Ch4TreesAndGraphs.h"
 #include "Ch5BitManipulation.h"
+#include "Ch8Recursion.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
@@ -222,49 +223,88 @@ int main() {
 	// END CH4
 
 	// CH5
-	// Prob 5.1
-	unsigned int N = 1 << 10;
-	unsigned int M = 21;
-	int i = 2;
-	int j = 6;
-	Ch5BitManipulation::printBin(N);
-	Ch5BitManipulation::printBin(M);
-	unsigned int result = Ch5BitManipulation::prob5_1(N, M, i, j);
-	Ch5BitManipulation::printBin(result);
-
-	cout << endl;
-
-	// Prob 5.2
-	cout << "1.625" << endl;
-	Ch5BitManipulation::prob5_2("1.625");
-	cout << "3.78125" << endl;
-	Ch5BitManipulation::prob5_2("3.78125");
-
-
-	unsigned int num = 20;
-	Ch5BitManipulation::printBin(num);
-	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_larger(num));
-
-	cout << endl;
-
-	num = 0xa0;
-	Ch5BitManipulation::printBin(num);
-	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
-	cout << endl;
-	num = 33;
-	Ch5BitManipulation::printBin(num);
-	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
-
-	cout << Ch5BitManipulation::prob5_5(31,14) << endl;
-	cout << Ch5BitManipulation::prob5_5(14,31) << endl;
-
-	cout << endl;
-
-	Ch5BitManipulation::prob5_6(523);
-	Ch5BitManipulation::prob5_6(4653);
-
+//	// Prob 5.1
+//	unsigned int N = 1 << 10;
+//	unsigned int M = 21;
+//	int i = 2;
+//	int j = 6;
+//	Ch5BitManipulation::printBin(N);
+//	Ch5BitManipulation::printBin(M);
+//	unsigned int result = Ch5BitManipulation::prob5_1(N, M, i, j);
+//	Ch5BitManipulation::printBin(result);
+//
+//	cout << endl;
+//
+//	// Prob 5.2
+//	cout << "1.625" << endl;
+//	Ch5BitManipulation::prob5_2("1.625");
+//	cout << "3.78125" << endl;
+//	Ch5BitManipulation::prob5_2("3.78125");
+//
+//
+//	unsigned int num = 20;
+//	Ch5BitManipulation::printBin(num);
+//	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_larger(num));
+//
+//	cout << endl;
+//
+//	num = 0xa0;
+//	Ch5BitManipulation::printBin(num);
+//	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
+//	cout << endl;
+//	num = 33;
+//	Ch5BitManipulation::printBin(num);
+//	Ch5BitManipulation::printBin(Ch5BitManipulation::prob5_3_smaller(num));
+//
+//	cout << Ch5BitManipulation::prob5_5(31,14) << endl;
+//	cout << Ch5BitManipulation::prob5_5(14,31) << endl;
+//
+//	cout << endl;
+//
+//	Ch5BitManipulation::prob5_6(523);
+//	Ch5BitManipulation::prob5_6(4653);
 
 	// END CH5
+
+	cout << endl;
+
+
+	// CH8
+	cout << "7th fibonacci number:  " << Ch8Recursion::prob8_1(5) << endl;
+	cout << "10th fibonacci number: " << Ch8Recursion::prob8_1(10) << endl;
+	cout << "30th fibonacci number: " << Ch8Recursion::prob8_1(30) << endl;
+
+	cout << endl;
+
+	int gridDim = 10;
+	// Make the NxN grid
+	int** grid = new int*[gridDim];
+	for (int i=0; i < gridDim; ++i) {
+		grid[i] = new int[gridDim];
+	}
+
+	// Initialize grid to all 1's, meaning can walk on the square
+	for (int r=0; r<gridDim; ++r) {
+		for (int c=0; c<gridDim; ++c) {
+			grid[r][c] = 1;
+		}
+	}
+
+	cout << "Number of paths to (9,9): ";
+	cout << Ch8Recursion::prob8_2(grid, gridDim, 9, 9, 0, 0) << endl;
+
+	cout << endl;
+
+	string perm = "ABC";
+	set<string> perms;
+	Ch8Recursion::prob8_4(perm, 0, perms);
+
+	cout << endl;
+
+	Ch8Recursion::prob8_5(3);
+
+	// END CH8
+
 
 
 	return 0;
