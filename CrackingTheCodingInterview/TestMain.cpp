@@ -14,6 +14,8 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include "gtest/gtest.h"
+
 #include <iostream>
 using namespace std;
 
@@ -55,54 +57,69 @@ void printTTTGrid(ticTacToe** grid) {
 	}
 }
 
-int main() {
+TEST(Ch1StringsAndArrays, prob1_1) {
+	EXPECT_EQ(false, Ch1ArraysAndStrings::prob1_1("FELIXLU"));
+	EXPECT_EQ(true, Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+	EXPECT_EQ(false, Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZZ"));
+	EXPECT_EQ(false, Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+}
+TEST(Ch1StringsAndArrays, prob1_2) {
+	char* word = new char[50];
 
-	// CH 1
-//	Ch1ArraysAndStrings::prob1_1("FELIXLU");
-//	Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-//	Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZZ");
-//	Ch1ArraysAndStrings::prob1_1("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ");
-//
-//	char* word = new char[50];
-//	strcpy(word, "abcdefg");
-//	Ch1ArraysAndStrings::prob1_2(word);
-//	cout << "Reversed: " << word << endl;
-//	strcpy(word, "FelixLuIsGreat!");
-//	Ch1ArraysAndStrings::prob1_2(word);
-//	cout << "Reversed: " << word << endl;
-//
-//	strcpy(word,"abc");
-//	Ch1ArraysAndStrings::prob1_3(word);
-//	strcpy(word,"aabc");
-//	Ch1ArraysAndStrings::prob1_3(word);
-//	strcpy(word, "abbc");
-//	Ch1ArraysAndStrings::prob1_3(word);
-//	strcpy(word, "abcc");
-//	Ch1ArraysAndStrings::prob1_3(word);
-//	strcpy(word,"aaaa");
-//	Ch1ArraysAndStrings::prob1_3(word);
-//
-//	string w1 = "Felix";
-//	string w2 = "lieFx";
-//	if (Ch1ArraysAndStrings::prob1_4(w1,w2))
-//		cout << "Anagram: " << w1 << " " << w2 << endl;
-//	else
-//		cout << "NOT anagram: " << w1 << " " << w2 << endl;
-//
-//	w1 = "ABBAc";
-//	w2 = "BAABd";
-//	if (Ch1ArraysAndStrings::prob1_4(w1,w2))
-//		cout << "Anagram: " << w1 << " " << w2 << endl;
-//	else
-//		cout << "NOT anagram: " << w1 << " " << w2 << endl;
-//
-//	w1 = "ABCDDDFELIX";
-//	w2 = "DDDBCAXIFEL";
-//	if (Ch1ArraysAndStrings::prob1_4(w1,w2))
-//		cout << "Anagram: " << w1 << " " << w2 << endl;
-//	else
-//		cout << "NOT anagram: " << w1 << " " << w2 << endl;
-//
+	strcpy(word, "abcdefg");
+	Ch1ArraysAndStrings::prob1_2(word);
+	string after(word);
+	EXPECT_EQ("gfedcba", after);
+
+	strcpy(word, "FelixLuIsGreat!");
+	Ch1ArraysAndStrings::prob1_2(word);
+	after = word;
+	EXPECT_EQ("!taerGsIuLxileF", after);
+}
+TEST(Ch1StringsAndArrays, prob1_3) {
+	char* word = new char[50];
+	string after;
+
+	strcpy(word,"abc");
+	Ch1ArraysAndStrings::prob1_3(word);
+	after = word;
+	EXPECT_EQ("abc", after);
+
+	strcpy(word,"aabc");
+	Ch1ArraysAndStrings::prob1_3(word);
+	after = word;
+	EXPECT_EQ("abc", after);
+
+	strcpy(word, "abbc");
+	Ch1ArraysAndStrings::prob1_3(word);
+	after = word;
+	EXPECT_EQ("abc", after);
+
+	strcpy(word, "abcc");
+	Ch1ArraysAndStrings::prob1_3(word);
+	after = word;
+	EXPECT_EQ("abc", after);
+
+	strcpy(word,"aaaa");
+	Ch1ArraysAndStrings::prob1_3(word);
+	after = word;
+	EXPECT_EQ("a", after);
+}
+TEST(Ch1StringsAndArrays, prob1_4) {
+	string w1 = "Felix";
+	string w2 = "lieFx";
+	EXPECT_EQ(true, Ch1ArraysAndStrings::prob1_4(w1,w2));
+
+	w1 = "ABBAc";
+	w2 = "BAABd";
+	EXPECT_EQ(false, Ch1ArraysAndStrings::prob1_4(w1,w2));
+
+	w1 = "ABCDDDFELIX";
+	w2 = "DDDBCAXIFEL";
+	EXPECT_EQ(true, Ch1ArraysAndStrings::prob1_4(w1,w2));
+}
+
+
 //
 //	w1 = "Test this program and see";
 //	cout << w1 << endl;
@@ -414,26 +431,22 @@ int main() {
 
 
 	// Prob 19.5
-	int hits;
-	int pseudoHits;
-	Moderate::prob19_5("RGGB", "YRGB", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
-	Moderate::prob19_5("BRGB", "YRGB", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
-	Moderate::prob19_5("YRGB", "YRGB", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
-	Moderate::prob19_5("RRGG", "BBYY", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
-	Moderate::prob19_5("RGYB", "BYGR", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
-	Moderate::prob19_5("RRRR", "BYGR", hits, pseudoHits);
-	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	int hits;
+//	int pseudoHits;
+//	Moderate::prob19_5("RGGB", "YRGB", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	Moderate::prob19_5("BRGB", "YRGB", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	Moderate::prob19_5("YRGB", "YRGB", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	Moderate::prob19_5("RRGG", "BBYY", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	Moderate::prob19_5("RGYB", "BYGR", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+//	Moderate::prob19_5("RRRR", "BYGR", hits, pseudoHits);
+//	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
 
 	// END Prob 19.5
 
 	// END CH 19
-
-
-	return 0;
-}
 

@@ -11,7 +11,7 @@
 #include <set>
 using namespace std;
 
-void Ch1ArraysAndStrings::prob1_1(const std::string& word) {
+bool Ch1ArraysAndStrings::prob1_1(const std::string& word) {
 	bool unique = true;
 
 	unsigned int letters = 0;
@@ -30,19 +30,20 @@ void Ch1ArraysAndStrings::prob1_1(const std::string& word) {
 			letters |= mask;
 	}
 
-	if (unique)
-		cout << word << " has all unique letters\n";
-	else {
-		cout << word << " DOES NOT have unique letters\n";
-		cout << "Duplicate letters: ";
-		for (int i=0; i < 26; i++) {
-			if ((1 << i) & duplicates) {
-				char tmp = A + i;
-				cout << tmp << " ";
-			}
-		}
-		cout << endl;
-	}
+//	if (unique)
+//		cout << word << " has all unique letters\n";
+//	else {
+//		cout << word << " DOES NOT have unique letters\n";
+//		cout << "Duplicate letters: ";
+//		for (int i=0; i < 26; i++) {
+//			if ((1 << i) & duplicates) {
+//				char tmp = A + i;
+//				cout << tmp << " ";
+//			}
+//		}
+//		cout << endl;
+//	}
+	return unique;
 }
 
 void Ch1ArraysAndStrings::prob1_2(char* cString) {
@@ -86,7 +87,7 @@ void Ch1ArraysAndStrings::prob1_3(char* word) {
 	// Move the Null pointer to the current location
 	*rPtr = '\0';
 
-	cout << "Word with no duplicates: " << word << endl;
+//	cout << "Word with no duplicates: " << word << endl;
 }
 
 bool Ch1ArraysAndStrings::prob1_4(const std::string& w1, const std::string& w2) {

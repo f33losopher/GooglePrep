@@ -9,6 +9,8 @@
 #define CH1ARRAYSANDSTRINGS_H_
 #include <string>
 
+typedef std::string string;
+
 class Ch1ArraysAndStrings {
 public:
 	Ch1ArraysAndStrings() {}
@@ -16,7 +18,7 @@ public:
 	/* Implement an algorithm to determine if a string has all unique
 	 * characters. What if you can not use additional data structures?
 	 */
-	static void prob1_1(const std::string& word);
+	static bool prob1_1(const string& word);
 
 	/* Write code to reverse a Cstyle string. (C-string means that "abcd"
 	 * is represented as five characters, including the null character)
@@ -33,11 +35,11 @@ public:
 
 	/* Write a method to decide if two strings are anagrams or not
 	 */
-	static bool prob1_4(const std::string& w1, const std::string& w2);
+	static bool prob1_4(const string& w1, const string& w2);
 
 	/* Write a method to replace all spaces in a string with '%20'
 	 */
-	static void prob1_5(std::string& w);
+	static void prob1_5(string& w);
 	static void prob1_5(char* w);
 
 	/* Given an image represented by an NxN matrix, where each pixel in the image is 4
@@ -54,7 +56,7 @@ public:
 	 * of another. Given two string s1 and s2, write code to check if s2 is a rotation
 	 * of s1 using only 1 call to substring (ie: "waterbottle" is a rotation of "erbottlewat"
 	 */
-	static bool prob1_8(const std::string& s1, const std::string& s2);
+	static bool prob1_8(const string& s1, const string& s2);
 };
 
 
