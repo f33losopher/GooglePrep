@@ -9,6 +9,7 @@
 #include "Ch4TreesAndGraphs.h"
 #include "Ch5BitManipulation.h"
 #include "Ch8Recursion.h"
+#include "Ch19Moderate.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
@@ -18,6 +19,8 @@ using namespace std;
 
 typedef LinkedList::Node LNode;
 typedef Ch4TreesAndGraphs::Node TNode;
+
+typedef Moderate::ticTacToe ticTacToe;
 
 void pMatrix(int** matrix, int row, int col) {
 	for (int r = 0; r < row; ++r) {
@@ -31,6 +34,25 @@ void pMatrix(int** matrix, int row, int col) {
 
 void pMatrix(int** matrix, int dim) {
 	pMatrix(matrix, dim, dim);
+}
+
+void clearTTTgrid(ticTacToe** grid) {
+	for(int row=0; row < 3; ++row) {
+		for(int col=0; col < 3; ++col) {
+			grid[row][col] = Moderate::EMPTY;
+		}
+	}
+}
+
+void printTTTGrid(ticTacToe** grid) {
+	for(int r=0; r<3; ++r) {
+		for(int c=0; c<3; ++c) {
+			if(grid[r][c] == Moderate::X)      { cout << "X "; }
+			else if(grid[r][c] == Moderate::O) { cout << "O "; }
+			else { cout << "  "; }
+		}
+		cout << endl;
+	}
 }
 
 int main() {
@@ -134,10 +156,10 @@ int main() {
 //	pMatrix(mPtr, M, N);
 //	Ch1ArraysAndStrings::prob1_7(mPtr, M, N);
 //	pMatrix(mPtr, M, N);
-	// END CH1
-
-	// CH2
-
+//	// END CH1
+//
+//	// CH2
+//
 //	// Prob 2.1
 //	LinkedList* LList = new LinkedList();
 //	srand(1);
@@ -147,7 +169,7 @@ int main() {
 //	LList->print();
 //	LList->removeDups();
 //	LList->print();
-//
+
 //	// Prob 2.2
 //	for (int i = 0; i < 10; ++i) {
 //		LList->add(rand() % 10);
@@ -263,48 +285,153 @@ int main() {
 //
 //	Ch5BitManipulation::prob5_6(523);
 //	Ch5BitManipulation::prob5_6(4653);
-
-	// END CH5
-
-	cout << endl;
-
-
-	// CH8
-	cout << "7th fibonacci number:  " << Ch8Recursion::prob8_1(5) << endl;
-	cout << "10th fibonacci number: " << Ch8Recursion::prob8_1(10) << endl;
-	cout << "30th fibonacci number: " << Ch8Recursion::prob8_1(30) << endl;
-
-	cout << endl;
-
-	int gridDim = 10;
-	// Make the NxN grid
-	int** grid = new int*[gridDim];
-	for (int i=0; i < gridDim; ++i) {
-		grid[i] = new int[gridDim];
-	}
-
-	// Initialize grid to all 1's, meaning can walk on the square
-	for (int r=0; r<gridDim; ++r) {
-		for (int c=0; c<gridDim; ++c) {
-			grid[r][c] = 1;
-		}
-	}
-
-	cout << "Number of paths to (9,9): ";
-	cout << Ch8Recursion::prob8_2(grid, gridDim, 9, 9, 0, 0) << endl;
-
-	cout << endl;
-
-	string perm = "ABC";
-	set<string> perms;
-	Ch8Recursion::prob8_4(perm, 0, perms);
-
-	cout << endl;
-
-	Ch8Recursion::prob8_5(3);
+//
+//	// END CH5
+//
+//	cout << endl;
+//
+//
+//	// CH8
+//	cout << "7th fibonacci number:  " << Ch8Recursion::prob8_1(5) << endl;
+//	cout << "10th fibonacci number: " << Ch8Recursion::prob8_1(10) << endl;
+//	cout << "30th fibonacci number: " << Ch8Recursion::prob8_1(30) << endl;
+//
+//	cout << endl;
+//
+//	int gridDim = 10;
+//	// Make the NxN grid
+//	int** grid = new int*[gridDim];
+//	for (int i=0; i < gridDim; ++i) {
+//		grid[i] = new int[gridDim];
+//	}
+//
+//	// Initialize grid to all 1's, meaning can walk on the square
+//	for (int r=0; r<gridDim; ++r) {
+//		for (int c=0; c<gridDim; ++c) {
+//			grid[r][c] = 1;
+//		}
+//	}
+//
+//	cout << "Number of paths to (9,9): ";
+//	cout << Ch8Recursion::prob8_2(grid, gridDim, 9, 9, 0, 0) << endl;
+//
+//	cout << endl;
+//
+//	string perm = "ABC";
+//	set<string> perms;
+//	Ch8Recursion::prob8_4(perm, 0, perms);
+//
+//	cout << endl;
+//
+//	Ch8Recursion::prob8_5(3);
 
 	// END CH8
 
+	// Ch 19 Moderate
+//	int x = 5;
+//	int y = 33;
+//	Moderate::prob19_1(x,y);
+
+	// Problem 19.2
+//	ticTacToe** grid = new ticTacToe*[3];
+//	for (int i=0; i < 3; ++i) {
+//		grid[i] = new ticTacToe[3];
+//	}
+//	clearTTTgrid(grid);
+//
+//	// Situation 1
+//	// x _ _
+//	// o o _
+//	// x _ x
+//	clearTTTgrid(grid);
+//	grid[0][0] = Moderate::X;
+//	grid[2][0] = Moderate::X;
+//	grid[2][2] = Moderate::X;
+//	grid[1][0] = Moderate::O;
+//	grid[1][1] = Moderate::O;
+//	printTTTGrid(grid);
+//	cout << "X wins: " << Moderate::prob19_2(grid, Moderate::X) << endl;
+//	cout << "O wins: " << Moderate::prob19_2(grid, Moderate::O) << endl << endl;
+//
+//	// Situation 2
+//	// x _ _
+//	// o o o
+//	// x _ x
+//	clearTTTgrid(grid);
+//	grid[0][0] = Moderate::X;
+//	grid[2][0] = Moderate::X;
+//	grid[2][2] = Moderate::X;
+//	grid[1][0] = Moderate::O;
+//	grid[1][1] = Moderate::O;
+//	grid[1][2] = Moderate::O;
+//	printTTTGrid(grid);
+//	cout << "X wins: " << Moderate::prob19_2(grid, Moderate::X) << endl;
+//	cout << "O wins: " << Moderate::prob19_2(grid, Moderate::O) << endl << endl;
+//
+//	// Situation 3
+//	// x _ _
+//	// o x _
+//	// o _ x
+//	clearTTTgrid(grid);
+//	grid[0][0] = Moderate::X;
+//	grid[1][1] = Moderate::X;
+//	grid[2][2] = Moderate::X;
+//	grid[1][0] = Moderate::O;
+//	grid[2][0] = Moderate::O;
+//	printTTTGrid(grid);
+//	cout << "X wins: " << Moderate::prob19_2(grid, Moderate::X) << endl;
+//	cout << "O wins: " << Moderate::prob19_2(grid, Moderate::O) << endl << endl;
+//
+//	// Situation 4
+//	// _ _ x
+//	// _ x _
+//	// x o o
+//	clearTTTgrid(grid);
+//	grid[0][2] = Moderate::X;
+//	grid[1][1] = Moderate::X;
+//	grid[2][0] = Moderate::X;
+//	grid[2][1] = Moderate::O;
+//	grid[2][2] = Moderate::O;
+//	printTTTGrid(grid);
+//	cout << "X wins: " << Moderate::prob19_2(grid, Moderate::X) << endl;
+//	cout << "O wins: " << Moderate::prob19_2(grid, Moderate::O) << endl << endl;
+
+	// Prob 19.3
+//	for(int i=0; i < 126; ++i) {
+//		cout << i << "  Num  trail zeros: " << Moderate::prob19_3(i) << endl;
+//	}
+	// END Prob 19.3
+
+	// Prob 19.4
+//	cout << "Max of 3,4 = " << Moderate::prob19_4(3,4) << endl;
+//	cout << "Max of 10,20 = " << Moderate::prob19_4(10,20) << endl;
+//	cout << "Max of 10,10 = " << Moderate::prob19_4(10,10) << endl;
+//	cout << "Max of -1,1 = " << Moderate::prob19_4(-1,1) << endl;
+//	cout << "Max of -12,-18 = " << Moderate::prob19_4(-12,-18) << endl;
+
+	// END Prob 19.4
+
+
+
+	// Prob 19.5
+	int hits;
+	int pseudoHits;
+	Moderate::prob19_5("RGGB", "YRGB", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+	Moderate::prob19_5("BRGB", "YRGB", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+	Moderate::prob19_5("YRGB", "YRGB", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+	Moderate::prob19_5("RRGG", "BBYY", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+	Moderate::prob19_5("RGYB", "BYGR", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+	Moderate::prob19_5("RRRR", "BYGR", hits, pseudoHits);
+	cout << "Hits: " << hits << "  PseudoHits: " << pseudoHits << endl;
+
+	// END Prob 19.5
+
+	// END CH 19
 
 
 	return 0;
