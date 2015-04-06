@@ -22,7 +22,7 @@ void insertion(int* array, int numElements);
 
 namespace mergeSort {
 void merge(int* array, int left, int right);
-void doMerge(int* array, int left, int mid, int right);
+void doMerge(int* array, int left, int right);
 }
 void merge(int* array, int numElements);
 
