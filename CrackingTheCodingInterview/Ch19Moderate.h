@@ -13,7 +13,6 @@
 
 typedef std::string string;
 
-
 namespace Moderate {
 /* Write a function to swap a number in place without temporary variables*/
 void prob19_1(int& x, int& y);
