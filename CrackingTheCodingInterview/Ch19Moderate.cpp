@@ -12,11 +12,9 @@
 using namespace std;
 
 void Moderate::prob19_1(int& x, int& y) {
-	cout << "Before x:" << x << " y:" << y << endl;
 	x ^= y;
 	y ^= x;
 	x ^= y;
-	cout << "After  x:" << x << " y:" << y << endl;
 }
 
 bool Moderate::prob19_2(ticTacToe** grid, ticTacToe player) {
