@@ -40,7 +40,7 @@ void Sort::insertion(int* array, int numElements) {
 	for(int i=1; i < numElements; i++) {
 		for(int k=i; k>0 && (array[k] < array[k-1]); k--) {
 			swap(array[k], array[k-1]);
-			print(array, numElements);
+//			print(array, numElements);
 		}
 	}
 }
@@ -129,7 +129,7 @@ void Sort::shell(int* array, int numElements) {
 		for (int i=gap; i < numElements; i++) {
 			for(int j=i-gap; j>=0 && (array[j] > array[j+gap]); j-=gap) {
 				swap(array[j], array[j+gap]);
-				print(array, numElements);
+//				print(array, numElements);
 			}
 		}
 	}
