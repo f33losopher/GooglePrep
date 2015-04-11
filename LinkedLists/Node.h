@@ -15,7 +15,7 @@
 struct Node {
 	Node() : data(0), next(NULL) {}
 	~Node() {
-		std::cout << "Destroy: Data = " << data << std::endl;
+//		std::cout << "Destroy: Data = " << data << std::endl;
 	}
 	int data;
 	Node* next;

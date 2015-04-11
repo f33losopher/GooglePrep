@@ -201,7 +201,7 @@ void Ch1ArraysAndStrings::prob1_7(int** matrix, int row, int col) {
 	set<int>::iterator end = zeroR.end();
 	while(itr != end) {
 		int r = *itr;
-		cout << "Zero out row: " << r << endl;
+//		cout << "Zero out row: " << r << endl;
 		for (int c=0; c<col; ++c)
 			matrix[r][c] = 0;
 		++itr;
@@ -211,7 +211,7 @@ void Ch1ArraysAndStrings::prob1_7(int** matrix, int row, int col) {
 	end = zeroC.end();
 	while(itr != end) {
 		int c = *itr;
-		cout << "Zero out col: " << c << endl;
+//		cout << "Zero out col: " << c << endl;
 		for (int r=0; r<row; ++r)
 			matrix[r][c] = 0;
 		++itr;
