@@ -23,9 +23,9 @@ BinaryTree::BinaryTree(int key) {
 
 void BinaryTree::add(int key) {
 	// 2 cases
-	// Root Node exists
-	//   Make a new node as root
 	// Root Node does not exist
+	//   Make a new node as root
+	// Root Node exists
 	//   Compare key, right=bigger or equal, left=less
 	//   Traverse down till you can add a leaf
 	Node* newNode = new Node(key);
@@ -54,7 +54,7 @@ void BinaryTree::add(int key) {
 }
 
 bool BinaryTree::remove(int key) {
-	// 4 cases
+	// 3 cases
 	// 1- Key node has no child nodes, just delete it, set parent pointing
 	//    to it be NULL
 	// 2- Key node has 1 child, set the parent node to point to it's child
@@ -161,9 +161,9 @@ Node* BinaryTree::find(int key, Node* node, SEARCH s) {
 
 Node* BinaryTree::findParent(Node* child) {
 	Node* parent = _root;
-	queue<Node *> searchQ;
-	searchQ.push(_root);
 	if (child != parent) {
+		queue<Node *> searchQ;
+		searchQ.push(_root);
 		while (searchQ.empty() == false) {
 			parent = searchQ.front();
 			searchQ.pop();

@@ -6,6 +6,7 @@
  */
 #include "BinarySearch.h"
 
+#define RECURSION
 int BinarySearch::intArray(int* array, int val, int sIdx, int eIdx) {
 #ifdef RECURSION
 	int idx = -1;
@@ -15,7 +16,6 @@ int BinarySearch::intArray(int* array, int val, int sIdx, int eIdx) {
 	if(array[mid] == val)
 		idx = mid;
 	else {
-		int tmp = array[mid];
 		if ( val < array[mid])
 			idx = intArray(array, val, sIdx, mid-1);
 		else
