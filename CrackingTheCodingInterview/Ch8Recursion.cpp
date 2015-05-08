@@ -113,3 +113,28 @@ void Ch8Recursion::prob8_5(int numParens) {
 		cout << *itr << endl;
 	}
 }
+
+void Ch8Recursion::prob8_6(int** grid, int N, int r, int c, int fill) {
+	if (r >= N || c >= N || r < 0 || c < 0)
+		return;
+	int cur = grid[r][c];
+	if (cur == fill)
+		return;
+	else {
+		prob8_6(grid, N, r, c, cur, fill);
+	}
+}
+
+void Ch8Recursion::prob8_6(int** grid, int N, int r, int c, int cur, int fill) {
+	if (r >= N || c >= N || r < 0 || c < 0)
+		return;
+	if(grid[r][c] != cur)
+		return;
+
+	grid[r][c] = fill;
+
+	prob8_6(grid, N, r-1, c, cur, fill);
+	prob8_6(grid, N, r+1, c, cur, fill);
+	prob8_6(grid, N, r, c-1, cur, fill);
+	prob8_6(grid, N, r, c+1, cur, fill);
+}

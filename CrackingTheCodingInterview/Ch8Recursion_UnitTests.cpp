@@ -10,6 +10,14 @@
 #include <iostream>
 using namespace std;
 
+void printGrid(int** grid, int N) {
+	for(int r = 0; r < N; ++r) {
+		for (int c = 0; c < N; ++c) {
+			cout << grid[r][c] << " ";
+		}
+		cout << endl;
+	}
+}
 
 TEST(Ch8Recursion, prob8_1) {
 	EXPECT_EQ(3, Ch8Recursion::prob8_1(5));
@@ -50,3 +58,57 @@ TEST(Ch8Recursion, prob8_5) {
 }
 
 
+TEST(Ch8Recursion, prob8_6) {
+	int N = 5;
+	int** grid = new int*[N];
+	for(int i=0; i < N; ++i) {
+		grid[i] = new int[N];
+	}
+
+	// Initialize grid to look like
+	// 2 2 2 2 2
+	// 2 2 1 1 1
+	// 2 1 3 3 1
+	// 1 3 3 1 1
+	// 2 1 1 1 2
+
+	// First Row
+	for(int c=0; c < N; ++c)
+		grid[0][c] = 2;
+
+	// Second Row
+	grid[1][0] = 2;
+	grid[1][1] = 2;
+	grid[1][2] = 1;
+	grid[1][3] = 1;
+	grid[1][4] = 1;
+
+	// Third Row
+	grid[2][0] = 2;
+	grid[2][1] = 1;
+	grid[2][2] = 3;
+	grid[2][3] = 3;
+	grid[2][4] = 1;
+
+	// Fourth Row
+	grid[3][0] = 1;
+	grid[3][1] = 3;
+	grid[3][2] = 3;
+	grid[3][3] = 1;
+	grid[3][4] = 1;
+
+	// Fifth Row
+	grid[4][0] = 2;
+	grid[4][1] = 1;
+	grid[4][2] = 1;
+	grid[4][3] = 1;
+	grid[4][4] = 2;
+
+	cout << "Before\n";
+	printGrid(grid, N);
+
+	Ch8Recursion::prob8_6(grid, N, 3, 0, 3);
+
+	cout << endl << "After\n";
+	printGrid(grid, N);
+}
