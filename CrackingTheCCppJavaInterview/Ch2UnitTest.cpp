@@ -93,6 +93,33 @@ TEST(Ch2, middleOfList) {
     EXPECT_EQ(3, mid->_val);
 }
 
+TEST(Ch2, circularList_yes) {
+    LinkedList* root = buildList(10);
+
+    // Link 10 to 4 to make a circle
+    LinkedList* p1 = root;
+    for (int i=1; i <= 4; ++i) {
+        p1 = p1->_next;
+    }
+
+    LinkedList* p2 = p1;
+    while (p2->_next != 0) {
+        p2 = p2->_next;
+    }
+    p2->_next = p1;
+
+    LinkedList* loopPtr = Ch2DataStructures::prob30(root);
+    LinkedList* nullPtr = 0;
+    EXPECT_NE(nullPtr, loopPtr);
+}
+
+TEST(Ch2, circularList_no) {
+    LinkedList* root = buildList(10);
+
+    root = Ch2DataStructures::prob30(root);
+    EXPECT_EQ(0, root);
+}
+
 int main (int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
