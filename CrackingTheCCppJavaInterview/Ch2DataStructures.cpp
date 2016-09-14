@@ -77,3 +77,18 @@ LinkedList* Ch2DataStructures::prob30(LinkedList* start) {
 
     return 0;
 }
+
+LinkedList* Ch2DataStructures::prob31(LinkedList* start, int k) {
+    LinkedList* p1 = start;
+    LinkedList* p2 = start;
+    for (int i=0; i < k; ++i) {
+        p1 = p1->_next;
+    }
+
+    while (p1->_next) {
+        p1 = p1->_next;
+        p2 = p2->_next;
+    }
+
+    return p2;
+}

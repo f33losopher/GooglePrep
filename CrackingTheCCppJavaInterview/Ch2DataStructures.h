@@ -35,6 +35,12 @@ public:
      */
     static LinkedList* prob30(LinkedList* start);
 
+    /**
+     * How would you find the (n-k)th node in a singley linked list, where n
+     * is the number of nodes and k < n
+     */
+    static LinkedList* prob31(LinkedList* start, int k);
+
 private:
 
 };

@@ -120,6 +120,19 @@ TEST(Ch2, circularList_no) {
     EXPECT_EQ(0, root);
 }
 
+TEST(Ch2, nMinusKthNode) {
+    LinkedList* root = buildList(10);
+
+    LinkedList* kPtr = Ch2DataStructures::prob31(root, 0);
+    EXPECT_EQ(10, kPtr->_val);
+
+    kPtr = Ch2DataStructures::prob31(root, 1);
+    EXPECT_EQ(9, kPtr->_val);
+
+    kPtr = Ch2DataStructures::prob31(root, 4);
+    EXPECT_EQ(6, kPtr->_val);
+}
+
 int main (int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
