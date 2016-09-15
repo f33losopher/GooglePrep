@@ -92,3 +92,18 @@ LinkedList* Ch2DataStructures::prob31(LinkedList* start, int k) {
 
     return p2;
 }
+
+void Ch2DataStructures::prob32(LinkedList* delNode) {
+    if (delNode->_next == 0) {
+        return;
+    }
+
+    LinkedList* next = 0;
+
+    next = delNode->_next;
+    delNode->_val = next->_val;
+
+    delNode->_next = next->_next;
+
+    delete(next);
+}

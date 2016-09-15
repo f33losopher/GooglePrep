@@ -133,6 +133,30 @@ TEST(Ch2, nMinusKthNode) {
     EXPECT_EQ(6, kPtr->_val);
 }
 
+TEST(Ch2, deleteNode) {
+    LinkedList* root = buildList(10);
+
+    LinkedList* delNode = root;
+    for (int i=1; i < 5; ++i) {
+        delNode = delNode->_next;
+    }
+
+    print(root);
+    Ch2DataStructures::prob32(delNode);
+    print(root);
+
+    root = buildList(10);
+
+    delNode = root;
+    for (int i=1; i < 10; ++i) {
+        delNode = delNode->_next;
+    }
+
+    print(root);
+    Ch2DataStructures::prob32(delNode);
+    print(root);
+}
+
 int main (int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

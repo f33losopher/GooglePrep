@@ -41,6 +41,11 @@ public:
      */
     static LinkedList* prob31(LinkedList* start, int k);
 
+    /**
+     * Given a pointer to a node in a Singley Linked List, how do you delete
+     * that node
+     */
+    static void prob32(LinkedList* delNode);
 private:
 
 };
