@@ -107,3 +107,13 @@ void Ch2DataStructures::prob32(LinkedList* delNode) {
 
     delete(next);
 }
+
+LinkedList* Ch2DataStructures::prob33(LinkedList* prev, LinkedList* cur) {
+    if (cur == 0) {
+        return prev;
+    }
+
+    LinkedList* next = cur->_next;
+    cur->_next = prev;
+    return prob33(cur, next);
+}

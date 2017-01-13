@@ -157,6 +157,16 @@ TEST(Ch2, deleteNode) {
     print(root);
 }
 
+TEST(Ch2, reverseLinkedListRecursion) {
+    LinkedList* root = buildList(10);
+    EXPECT_EQ(1, root->_val);
+    print(root);
+
+    root = Ch2DataStructures::prob33(0, root);
+    EXPECT_EQ(10, root->_val);
+    print(root);
+}
+
 int main (int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

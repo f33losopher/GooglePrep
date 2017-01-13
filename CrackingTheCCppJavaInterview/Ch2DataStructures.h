@@ -46,6 +46,12 @@ public:
      * that node
      */
     static void prob32(LinkedList* delNode);
+
+    /**
+     * Reverse a singly linked list using recursion
+     */
+    static LinkedList* prob33(LinkedList* prev, LinkedList* cur);
+
 private:
 
 };
