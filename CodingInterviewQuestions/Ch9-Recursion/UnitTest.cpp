@@ -8,8 +8,10 @@
 #include "gtest/gtest.h"
 #include "Prob1-TowersOfHanoi.h"
 #include "Prob2-ArraySorted.h"
+#include "Prob3-Anagram.h"
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 TEST(Prob1, TowersOfHanoi) {
@@ -37,6 +39,13 @@ TEST(Prob2, isArraySortedNO) {
 	isArraySorted* isasPtr = new isArraySorted();
 	EXPECT_EQ(0, isasPtr->isArrayInSortedOrder(arr1,size));
 	EXPECT_EQ(0, isasPtr->isArrayInSortedOrder(arr2,size));
+}
+
+TEST(Prob3, Anagram) {
+	Anagram* aPtr = new Anagram();
+	string s = "abc";
+
+	aPtr->anagrams(s, 0);
 }
 
 int main (int argc, char** argv) {
