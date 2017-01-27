@@ -9,6 +9,7 @@
 #include "Prob1-TowersOfHanoi.h"
 #include "Prob2-ArraySorted.h"
 #include "Prob3-Anagram.h"
+#include "Prob4-StrCombos.h"
 
 #include <iostream>
 #include <string>
@@ -46,6 +47,12 @@ TEST(Prob3, Anagram) {
 	string s = "abc";
 
 	aPtr->anagrams(s, 0);
+}
+
+TEST(Prob4, StrCombos) {
+	char original[5] = {'a', 'b', 'c'};
+	StringCombos* strCmbPtr = new StringCombos(original);
+	strCmbPtr->Combinations(0,0);
 }
 
 int main (int argc, char** argv) {
