@@ -31,7 +31,7 @@ void StringCombos::Combinations(int depth, int start) {
 		myCombination[depth] = myOriginal[i];
 		myCombination[depth+1] = '\0';
 		cout << "  " << myCombination << endl;
-		if (i < myLength - 1) {
+		if (i < myLength) {
 			Combinations(depth + 1, i + 1);
 		}
 		cout << "  Bottom of loop" << endl;
