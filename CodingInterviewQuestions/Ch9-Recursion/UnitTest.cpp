@@ -10,6 +10,7 @@
 #include "Prob2-ArraySorted.h"
 #include "Prob3-Anagram.h"
 #include "Prob4-StrCombos.h"
+#include "Prob5-ComboBits.h"
 
 #include <iostream>
 #include <string>
@@ -53,6 +54,14 @@ TEST(Prob4, StrCombos) {
 	char original[5] = {'a', 'b', 'c'};
 	StringCombos* strCmbPtr = new StringCombos(original);
 	strCmbPtr->Combinations(0,0);
+}
+
+TEST(Prob5, ComboBits) {
+	int numBits = 5;
+	ComboBits* cbPtr = new ComboBits(numBits);
+	cbPtr->Binary(numBits);
+	cout << "=====" << endl;
+	cbPtr->Binary2(numBits);
 }
 
 int main (int argc, char** argv) {
