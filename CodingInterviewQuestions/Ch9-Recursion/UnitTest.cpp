@@ -11,6 +11,7 @@
 #include "Prob3-Anagram.h"
 #include "Prob4-StrCombos.h"
 #include "Prob5-ComboBits.h"
+#include "Prob7-WildCard.h"
 
 #include <iostream>
 #include <string>
@@ -62,6 +63,24 @@ TEST(Prob5, ComboBits) {
 	cbPtr->Binary(numBits);
 	cout << "=====" << endl;
 	cbPtr->Binary2(numBits);
+}
+
+TEST(Prob5, WildCard) {
+	WildCard* wcPtr = new WildCard();
+	string s = "10?";
+	wcPtr->replaceQMarks(s);
+
+	cout << "=====" << endl;
+	s = "1??";
+	wcPtr->replaceQMarks(s);
+
+	cout << "=====" << endl;
+	s = "1???";
+	wcPtr->replaceQMarks(s);
+
+	cout << "=====" << endl;
+	s = "111";
+	wcPtr->replaceQMarks(s);
 }
 
 int main (int argc, char** argv) {
