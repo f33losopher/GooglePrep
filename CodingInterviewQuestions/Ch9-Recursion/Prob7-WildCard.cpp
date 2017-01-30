@@ -17,34 +17,22 @@ WildCard::~WildCard() {
 
 }
 void WildCard::replaceQMarks(string& s) {
-	findQMarks(s);
-
-	if (myQmarks.size() == 0) {
-		cout << s << endl;
-	} else {
-		replace(s, 0);
-	}
-}
-
-void WildCard::findQMarks(string& s) {
-	myQmarks.clear();
-	for (unsigned int i = 0; i < s.length(); ++i) {
-		if (s[i] == '?') {
-			cout << "Found ? at i=" << i << endl;
-			myQmarks.push_back(i);
-		}
-	}
+	replace(s, 0);
 }
 
 void WildCard::replace(string& s, unsigned int idx) {
-	string tmp = s;
+	if (idx >= s.length()) {
+		cout << s << endl;
+		return;
+	}
 
-	if (idx >= myQmarks.size()) {
-		cout << tmp << endl;
-	} else {
-		tmp[myQmarks.at(idx)] = '0';
+	string tmp = s;
+	if (tmp[idx] == '?') {
+		tmp[idx] = '0';
 		replace(tmp, idx+1);
-		tmp[myQmarks.at(idx)] = '1';
+		tmp[idx] = '1';
+		replace(tmp, idx+1);
+	} else {
 		replace(tmp, idx+1);
 	}
 }

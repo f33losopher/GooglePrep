@@ -9,7 +9,6 @@
 #define PROB7_WILDCARD_H_
 
 #include <string>
-#include <vector>
 
 class WildCard {
 public:
@@ -19,9 +18,6 @@ public:
 	void replaceQMarks(std::string& s);
 
 private:
-	void findQMarks(std::string& s);
 	void replace(std::string& s, unsigned int idx);
-
-	std::vector<unsigned int> myQmarks;
 };
 #endif /* PROB7_WILDCARD_H_ */
