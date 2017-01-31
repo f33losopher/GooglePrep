@@ -12,6 +12,7 @@
 #include "Prob4-StrCombos.h"
 #include "Prob5-ComboBits.h"
 #include "Prob7-WildCard.h"
+#include "Prob8-LongChain.h"
 
 #include <iostream>
 #include <string>
@@ -65,7 +66,7 @@ TEST(Prob5, ComboBits) {
 	cbPtr->Binary2(numBits);
 }
 
-TEST(Prob5, WildCard) {
+TEST(Prob7, WildCard) {
 	WildCard* wcPtr = new WildCard();
 	string s = "10?";
 	wcPtr->replaceQMarks(s);
@@ -81,6 +82,20 @@ TEST(Prob5, WildCard) {
 	cout << "=====" << endl;
 	s = "111";
 	wcPtr->replaceQMarks(s);
+}
+
+TEST(Prob8, LongChain) {
+	LongChain* lcPtr = new LongChain();
+	uint maxRange = 5;
+	lcPtr->setXY(maxRange, maxRange);
+	int grid[][maxRange] = {{1,1,0,0,0},
+			                {0,1,1,0,0},
+			                {0,0,1,0,1},
+			                {1,0,0,0,1},
+			                {0,1,0,1,1}};
+
+	cout << lcPtr->longChain(&grid[0][0], 0, 0) << endl;
+//	EXPECT_EQ(5, lcPtr->longChain(grid, 0, 0));
 }
 
 int main (int argc, char** argv) {
