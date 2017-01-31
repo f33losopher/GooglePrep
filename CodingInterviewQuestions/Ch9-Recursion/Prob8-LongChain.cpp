@@ -7,6 +7,10 @@
 
 #include "Prob8-LongChain.h"
 
+#include <iostream>
+using namespace std;
+
+
 LongChain::LongChain() : myXrange(0), myYrange(0) {
 
 }
@@ -20,7 +24,8 @@ void LongChain::setXY(uint x, uint y) {
 	myYrange = y;
 }
 
-uint LongChain::longChain(int** grid, uint x, uint y) {
+uint LongChain::longChain(vector< vector<int> > &grid, uint x, uint y) {
+cout << "Call longChain with x: " << x << " y: " << y << endl;
 
 	if (x < 0 || x >= myXrange) {
 		return 0;
@@ -32,6 +37,8 @@ uint LongChain::longChain(int** grid, uint x, uint y) {
 	if (grid[x][y] == 1) {
 		oneOrZero = 1;
 	}
+
+cout << "oneOrZero: " << oneOrZero << endl;
 
 	uint UL, UP, UR, LT, RT, LL, LW, LR = 0;
 

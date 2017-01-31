@@ -84,17 +84,38 @@ TEST(Prob7, WildCard) {
 	wcPtr->replaceQMarks(s);
 }
 
-TEST(Prob8, LongChain) {
+TEST(Prob8, LongChain)  {
 	LongChain* lcPtr = new LongChain();
 	uint maxRange = 5;
 	lcPtr->setXY(maxRange, maxRange);
-	int grid[][maxRange] = {{1,1,0,0,0},
-			                {0,1,1,0,0},
-			                {0,0,1,0,1},
-			                {1,0,0,0,1},
-			                {0,1,0,1,1}};
+	vector< vector<int> > grid ( maxRange, vector<int>(maxRange));
+	grid[0][0] = 1;
+	grid[0][1] = 1;
+	grid[0][2] = 0;
+	grid[0][3] = 0;
+	grid[0][4] = 0;
+	grid[1][0] = 0;
+	grid[1][1] = 1;
+	grid[1][2] = 1;
+	grid[1][3] = 0;
+	grid[1][4] = 0;
+	grid[2][0] = 0;
+	grid[2][1] = 0;
+	grid[2][2] = 1;
+	grid[2][3] = 0;
+	grid[2][4] = 1;
+	grid[3][0] = 1;
+	grid[3][1] = 0;
+	grid[3][2] = 0;
+	grid[3][3] = 0;
+	grid[3][4] = 1;
+	grid[4][0] = 0;
+	grid[4][1] = 1;
+	grid[4][2] = 0;
+	grid[4][3] = 1;
+	grid[4][4] = 1;
 
-	cout << lcPtr->longChain(&grid[0][0], 0, 0) << endl;
+	cout << lcPtr->longChain(grid, 0, 0) << endl;
 //	EXPECT_EQ(5, lcPtr->longChain(grid, 0, 0));
 }
 
