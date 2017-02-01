@@ -19,12 +19,12 @@ LongChain::~LongChain() {
 
 }
 
-void LongChain::setXY(uint x, uint y) {
+void LongChain::setXY(int x, int y) {
 	myXrange = x;
 	myYrange = y;
 }
 
-uint LongChain::longChain(vector< vector<int> > &grid, uint x, uint y) {
+int LongChain::longChain(vector< vector<int> > &grid, int x, int y) {
 cout << "Call longChain with x: " << x << " y: " << y << endl;
 
 	if (x < 0 || x >= myXrange) {
@@ -39,6 +39,9 @@ cout << "Call longChain with x: " << x << " y: " << y << endl;
 	}
 
 cout << "oneOrZero: " << oneOrZero << endl;
+
+int DUMMY;
+cin >> DUMMY;
 
 	uint UL, UP, UR, LT, RT, LL, LW, LR = 0;
 

@@ -8,7 +8,6 @@
 #ifndef PROB8_LONGCHAIN_H_
 #define PROB8_LONGCHAIN_H_
 
-#include <sys/types.h>
 #include <vector>
 
 class LongChain {
@@ -18,12 +17,12 @@ public:
 
 	// Set the x,y max ranges of the incoming grid. Must be called before
 	// longChain(...)
-	void setXY(uint x, uint y);
-	uint longChain(std::vector< std::vector <int> > &grid, uint x, uint y);
+	void setXY(int x, int y);
+	int longChain(std::vector< std::vector <int> > &grid, int x, int y);
 
 private:
-	uint myXrange;
-	uint myYrange;
+	int myXrange;
+	int myYrange;
 };
 
 
