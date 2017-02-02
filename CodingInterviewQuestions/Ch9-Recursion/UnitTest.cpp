@@ -84,39 +84,65 @@ TEST(Prob7, WildCard) {
 	wcPtr->replaceQMarks(s);
 }
 
+void printGrid(vector <vector<int> > &grid, int idx, int idy) {
+	for (int y = 0; y < idy; y++) {
+		for (int x = 0; x < idx; x++) {
+			cout << grid[x][y] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
 TEST(Prob8, LongChain)  {
 	LongChain* lcPtr = new LongChain();
 	uint maxRange = 5;
-	lcPtr->setXY(maxRange, maxRange);
 	vector< vector<int> > grid ( maxRange, vector<int>(maxRange));
-	grid[0][0] = 1;
-	grid[0][1] = 1;
-	grid[0][2] = 0;
-	grid[0][3] = 0;
-	grid[0][4] = 0;
-	grid[1][0] = 0;
-	grid[1][1] = 1;
-	grid[1][2] = 1;
-	grid[1][3] = 0;
-	grid[1][4] = 0;
-	grid[2][0] = 0;
-	grid[2][1] = 0;
-	grid[2][2] = 1;
-	grid[2][3] = 0;
-	grid[2][4] = 1;
-	grid[3][0] = 1;
-	grid[3][1] = 0;
-	grid[3][2] = 0;
-	grid[3][3] = 0;
-	grid[3][4] = 1;
-	grid[4][0] = 0;
-	grid[4][1] = 1;
-	grid[4][2] = 0;
-	grid[4][3] = 1;
-	grid[4][4] = 1;
 
-	cout << lcPtr->longChain(grid, 0, 0) << endl;
-//	EXPECT_EQ(5, lcPtr->longChain(grid, 0, 0));
+	// 1 1 0 0 0
+	// 0 1 1 0 0
+	// 0 0 1 0 1
+	// 1 0 0 0 1
+	// 0 1 0 1 1
+	lcPtr->setXY(maxRange, maxRange);
+	grid[0][0] = 1; grid[1][0] = 1; grid[2][0] = 0; grid[3][0] = 0; grid[4][0] = 0;
+	grid[0][1] = 0; grid[1][1] = 1; grid[2][1] = 1; grid[3][1] = 0; grid[4][1] = 0;
+	grid[0][2] = 0; grid[1][2] = 0; grid[2][2] = 1; grid[3][2] = 0; grid[4][2] = 1;
+	grid[0][3] = 1; grid[1][3] = 0; grid[2][3] = 0; grid[3][3] = 0; grid[4][3] = 1;
+	grid[0][4] = 0; grid[1][4] = 1; grid[2][4] = 0; grid[3][4] = 1; grid[4][4] = 1;
+	printGrid(grid, maxRange, maxRange);
+	EXPECT_EQ(5, lcPtr->longChain(grid));
+
+	// 1 1 0 0 0
+	// 0 1 1 0 0
+	// 0 0 1 1 1
+	// 1 0 0 0 1
+	// 0 1 0 1 1
+	lcPtr->setXY(maxRange, maxRange);
+	grid[0][0] = 1; grid[1][0] = 1; grid[2][0] = 0; grid[3][0] = 0; grid[4][0] = 0;
+	grid[0][1] = 0; grid[1][1] = 1; grid[2][1] = 1; grid[3][1] = 0; grid[4][1] = 0;
+	grid[0][2] = 0; grid[1][2] = 0; grid[2][2] = 1; grid[3][2] = 1; grid[4][2] = 1;
+	grid[0][3] = 1; grid[1][3] = 0; grid[2][3] = 0; grid[3][3] = 0; grid[4][3] = 1;
+	grid[0][4] = 0; grid[1][4] = 1; grid[2][4] = 0; grid[3][4] = 1; grid[4][4] = 1;
+	printGrid(grid, maxRange, maxRange);
+	EXPECT_EQ(10, lcPtr->longChain(grid));
+
+	// 1 1 1 1 1 1
+    // 1 0 0 0 0 1
+	// 1 0 1 1 0 1
+	// 1 0 1 1 0 1
+	// 1 0 0 0 0 1
+	// 1 1 1 1 1 1
+	lcPtr->setXY(maxRange + 1, maxRange + 1);
+	grid.resize(maxRange+1, vector<int>(maxRange+1, 0));
+	grid[0][0] = 1; grid[1][0] = 1; grid[2][0] = 1; grid[3][0] = 1; grid[4][0] = 1; grid[5][0] = 1;
+	grid[0][1] = 1; grid[1][1] = 0; grid[2][1] = 0; grid[3][1] = 0; grid[4][1] = 0; grid[5][1] = 1;
+	grid[0][2] = 1; grid[1][2] = 0; grid[2][2] = 1; grid[3][2] = 1; grid[4][2] = 0; grid[5][2] = 1;
+	grid[0][3] = 1; grid[1][3] = 0; grid[2][3] = 1; grid[3][3] = 1; grid[4][3] = 0; grid[5][3] = 1;
+	grid[0][4] = 1; grid[1][4] = 0; grid[2][4] = 0; grid[3][4] = 0; grid[4][4] = 0; grid[5][4] = 1;
+	grid[0][5] = 1; grid[1][5] = 1; grid[2][5] = 1; grid[3][5] = 1; grid[4][5] = 1; grid[5][5] = 1;
+	printGrid(grid, maxRange+1, maxRange+1);
+	EXPECT_EQ(20, lcPtr->longChain(grid));
 }
 
 int main (int argc, char** argv) {

@@ -11,7 +11,7 @@
 using namespace std;
 
 
-LongChain::LongChain() : myXrange(0), myYrange(0) {
+LongChain::LongChain() : myXrange(0), myYrange(0), myMax(0) {
 
 }
 
@@ -22,47 +22,57 @@ LongChain::~LongChain() {
 void LongChain::setXY(int x, int y) {
 	myXrange = x;
 	myYrange = y;
+
+	mySearched.resize(x, vector<int>(y,0));
+
+	myMax = 0;
 }
 
-int LongChain::longChain(vector< vector<int> > &grid, int x, int y) {
-cout << "Call longChain with x: " << x << " y: " << y << endl;
+int LongChain::longChain(vector< vector<int> > &grid) {
+	// Search each cell, if there is a 1, then proceed to search for number
+	// of adjacent 1 cells
+	for (int y = 0; y < myYrange; y++) {
+		for (int x = 0; x < myXrange; x++) {
+			if (validRange(x,y) && grid[x][y] == 1) {
+				findOnes(grid, x, y, 0);
+			}
+		}
+	}
 
+	return myMax;
+}
+
+void LongChain::findOnes(vector< vector<int> > &grid, int x, int y, int max) {
+	mySearched[x][y] = 1;
+
+	max++;
+	if (max > myMax) {
+		myMax = max;
+	}
+
+	// Search the eight directions
+	int direction[][2] = {{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
+	for (int i=0; i < 8; ++i) {
+		int srcX = x + direction[i][0];
+		int srcY = y + direction[i][1];
+
+		if (validRange(srcX, srcY) && mySearched[srcX][srcY] == 0 && grid[srcX][srcY] == 1) {
+
+			findOnes(grid, srcX, srcY, max);
+		}
+	}
+
+	mySearched[x][y] = 0;
+}
+
+bool LongChain::validRange(int x, int y) {
+	bool isValid = true;
 	if (x < 0 || x >= myXrange) {
-		return 0;
-	} else if (y < 0 || y >= myYrange) {
-		return 0;
+		isValid = false;
 	}
 
-	int oneOrZero = 0;
-	if (grid[x][y] == 1) {
-		oneOrZero = 1;
+	if (y < 0 || y >= myYrange) {
+		return false;
 	}
-
-cout << "oneOrZero: " << oneOrZero << endl;
-
-int DUMMY;
-cin >> DUMMY;
-
-	uint UL, UP, UR, LT, RT, LL, LW, LR = 0;
-
-	UL = oneOrZero + longChain(grid, x-1, y-1);
-	UP = oneOrZero + longChain(grid, x,   y-1);
-	UR = oneOrZero + longChain(grid, x+1, y-1);
-	LT = oneOrZero + longChain(grid, x-1, y);
-	RT = oneOrZero + longChain(grid, x+1, y);
-	LL = oneOrZero + longChain(grid, x-1, y+1);
-	LW = oneOrZero + longChain(grid, x,   y+1);
-	LR = oneOrZero + longChain(grid, x+1, y+1);
-
-	uint max = 0;
-	if (UL > max) max = UL;
-	if (UP > max) max = UP;
-	if (UR > max) max = UR;
-	if (LT > max) max = LT;
-	if (RT > max) max = RT;
-	if (LL > max) max = LL;
-	if (LW > max) max = LW;
-	if (LR > max) max = LR;
-
-	return max;
+	return isValid;
 }
