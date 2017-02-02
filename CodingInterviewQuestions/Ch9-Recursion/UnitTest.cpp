@@ -127,6 +127,20 @@ TEST(Prob8, LongChain)  {
 	printGrid(grid, maxRange, maxRange);
 	EXPECT_EQ(10, lcPtr->longChain(grid));
 
+	// 0 0 1 0 0
+	// 0 0 1 0 0
+	// 1 1 1 1 1
+	// 0 0 1 0 0
+	// 0 0 1 0 0
+	lcPtr->setXY(maxRange, maxRange);
+	grid[0][0] = 0; grid[1][0] = 0; grid[2][0] = 1; grid[3][0] = 0; grid[4][0] = 0;
+	grid[0][1] = 0; grid[1][1] = 0; grid[2][1] = 1; grid[3][1] = 0; grid[4][1] = 0;
+	grid[0][2] = 1; grid[1][2] = 1; grid[2][2] = 1; grid[3][2] = 1; grid[4][2] = 1;
+	grid[0][3] = 0; grid[1][3] = 0; grid[2][3] = 1; grid[3][3] = 0; grid[4][3] = 0;
+	grid[0][4] = 0; grid[1][4] = 0; grid[2][4] = 1; grid[3][4] = 0; grid[4][4] = 0;
+	printGrid(grid, maxRange, maxRange);
+	EXPECT_EQ(7, lcPtr->longChain(grid));
+
 	// 1 1 1 1 1 1
     // 1 0 0 0 0 1
 	// 1 0 1 1 0 1
