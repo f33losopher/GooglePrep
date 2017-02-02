@@ -17,6 +17,7 @@ WildCard::~WildCard() {
 
 }
 void WildCard::replaceQMarks(string& s) {
+	cout << "Input: " << s << endl;
 	replace(s, 0);
 }
 
