@@ -21,6 +21,7 @@ public:
 	void readFile(std::string file);
 	void writeFile(std::string file);
 
+	const std::vector<Student*>& getStudents() const;
 
 private:
 	std::vector<Student*> myStudents;

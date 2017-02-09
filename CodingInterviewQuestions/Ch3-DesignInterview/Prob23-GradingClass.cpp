@@ -40,7 +40,8 @@ void GradingClass::readFile(string file) {
 
 	string line;
 	while (getline(ifs, line)) {
-		cout << line << endl;
+		// DEBUG
+//		cout << line << endl;
 
 		Student* newStud = new Student();
 		char buf[500];
@@ -62,7 +63,8 @@ void GradingClass::readFile(string file) {
 		}
 		newStud->calcGrade();
 
-		cout << *newStud << endl;
+		// DEBUG
+//		cout << *newStud << endl;
 
 		myStudents.push_back(newStud);
 	}
@@ -82,6 +84,10 @@ void GradingClass::writeFile(string file) {
 	printSorted("marks", out, studsByMarks);
 
 	out.close();
+}
+
+const vector<Student*>& GradingClass::getStudents() const {
+	return myStudents;
 }
 
 void GradingClass::printSorted(string sortType, fstream& fs, vector<Student*>& list) {
